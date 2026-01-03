@@ -1,0 +1,298 @@
+https://es.javascript.info/array-methods
+
+
+Métodos para agregar/eliminar elementos:
+
+push()
+Descripción: Agrega elementos al final
+Sintaxis: array.push(elemento1, elemento2, ...)
+Ejemplo: [1,2].push(3) // [1,2,3]
+
+pop()
+Descripción: Elimina último elemento
+Sintaxis: array.pop()
+Ejemplo: [1,2,3].pop() // [1,2]
+
+unshift()
+Descripción: Agrega elementos al inicio
+Sintaxis: array.unshift(elemento1, elemento2, ...)
+Ejemplo: [2,3].unshift(1) // [1,2,3]
+
+shift()
+Descripción: Elimina primer elemento
+Sintaxis: array.shift()
+Ejemplo: [1,2,3].shift() // [2,3]
+
+
+
+Métodos de Información
+
+length (propiedad)
+Descripción: Devuelve número de elementos
+Sintaxis: array.length
+Ejemplo: [1,2,3].length // 3
+
+isArray()
+Descripción: Verifica si es array
+Sintaxis: Array.isArray(valor)
+Ejemplo: Array.isArray([1,2]) // true
+
+
+
+Métodos de Modificación
+
+splice()
+Descripción: Agrega/elimina elementos (modifica original)
+Sintaxis: array.splice(índice, cantidadAEliminar, ...elementosAAgregar)
+Ejemplo: [1,2,3].splice(1,1,4) // [1,4,3]
+
+slice()
+Descripción: Devuelve porción del array (no modifica original)
+Sintaxis: array.slice(inicio, fin)
+Ejemplo: [1,2,3,4].slice(1,3) // [2,3]
+
+concat()
+Descripción: Combina arrays (no modifica original)
+Sintaxis: array.concat(...arrays)
+Ejemplo: [1,2].concat([3,4]) // [1,2,3,4]
+
+
+
+Métodos de Iteración
+
+forEach()
+Descripción: Ejecuta función para cada elemento
+Sintaxis: array.forEach(callback(elemento, índice, array))
+Ejemplo: [1,2,3].forEach(x => console.log(x))
+
+some()
+Descripción: Verifica si algún elemento cumple la condición.
+Sintaxis: array.some(callback)
+Ejemplo: [1,2,3].some(x => x>2) // true
+
+every()
+Descripción: Verifica si todos cumplen
+Sintaxis: array.every(callback)
+Ejemplo: [1,2,3].every(x => x>0) // true
+
+
+
+Métodos de Búsqueda
+
+indexOf()
+Descripción: Encuentra índice de elemento.
+Sintaxis: array.indexOf(elemento, desdeIndice)
+Ejemplo: ['a','b','c'].indexOf('b') // 1
+
+lastIndexOf()
+Descripción: Encuentra último índice de elemento.
+Sintaxis: array.lastIndexOf(elemento, desdeIndice)
+Ejemplo: ['a','b','a'].lastIndexOf('a') // 2
+
+includes()
+Descripción: Verifica si array contiene el elemento que se busca.
+Sintaxis: array.includes(elemento, desdeIndice)
+Ejemplo: [1,2,3].includes(2) // true
+
+find()
+Descripción: Encuentra primer elemento que cumpla condición.
+Sintaxis: array.find(callback)
+Ejemplo: [1,2,3].find(x => x>1) // 2
+
+findIndex()
+Descripción: Encuentra índice del primer elemento que cumpla condición.
+Sintaxis: array.findIndex(callback)
+Ejemplo: [1,2,3].findIndex(x => x>1) // 1
+
+
+
+Métodos de Conversión
+
+join()
+Descripción: Convierte array a string
+Sintaxis: array.join(separador)
+Ejemplo: ['a','b','c'].join('-') // "a-b-c"
+
+split() (método de String)
+Descripción: Convierte string a array
+Sintaxis: string.split(separador, límite)
+Ejemplo: "a-b-c".split('-') // ['a','b','c']
+
+
+
+Métodos de Ordenamiento
+
+sort()
+Descripción: Ordena elementos (modifica array original)
+Sintaxis: array.sort([funciónComparación])
+Ejemplo: [3,1,2].sort() // [1,2,3]
+const listaEdad = [...inventors].sort((a,b) => {
+  return a.localeCompare(b); // Compara entre string
+}) // Crea una copia del arreglo.
+
+
+reverse()
+Descripción: Invierte orden del array
+Sintaxis: array.reverse()
+Ejemplo: [1,2,3].reverse() // [3,2,1]
+
+
+
+Métodos de Transformación
+
+map()
+Descripción: Crea nuevo array transformando cada elemento
+Sintaxis: array.map(callback(elemento, índice, array))
+Ejemplo: [1,2,3].map(x => x*2) // [2,4,6]
+
+filter()
+Descripción: Filtra elementos que cumplan condición
+Sintaxis: array.filter(callback(elemento, índice, array))
+Ejemplo: [1,2,3,4].filter(x => x>2) // [3,4]
+
+reduce() / reduceRight()
+Descripción: Reduce array a un único valor
+Sintaxis: array.reduce(callback(acumulador, elemento, índice, array), valorInicial)
+Ejemplo: [1,2,3].reduce((sum, x) => sum + x, 0) // 6
+
+flat() / flatMap()
+Descripción: Aplana arrays anidados
+Sintaxis: array.flat(profundidad)
+Ejemplo: [[1,2],[3,4]].flat() // [1,2,3,4]
+
+
+
+
+
+
+Métodos de Filtrado Avanzados
+
+filterRange()
+Descripción: Filtra elementos dentro de un rango numérico (no modifica original)
+Sintaxis: filterRange(array, min, max)
+Ejemplo: filterRange([1,2,3,4,5], 2, 4) // [2,3,4]
+
+function filterRange(arr, a, b) {
+  return arr.filter(item => a <= item && item <= b);
+}
+
+
+filterRangeInPlace()
+Descripción: Filtra elementos dentro de un rango modificando el array original
+Sintaxis: filterRangeInPlace(array, min, max)
+Ejemplo: let arr = [1,2,3,4,5]; filterRangeInPlace(arr, 2, 4) // arr = [2,3,4]
+
+function filterRangeInPlace(arr, a, b) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < a || arr[i] > b) {
+      arr.splice(i, 1);
+      i--;
+    }
+  }
+}
+
+
+copySorted()
+Descripción: Crea copia ordenada del array sin modificar el original
+Sintaxis: copySorted(array)
+Ejemplo: copySorted(["HTML","JavaScript","CSS"]) // ["CSS","HTML","JavaScript"]
+
+function copySorted(arr) {
+  return arr.slice().sort();
+}
+
+
+shuffle()
+Descripción: Mezcla/baraja elementos del array en orden aleatorio
+Sintaxis: shuffle(array)
+Ejemplo: shuffle([1,2,3,4,5]) // [3,1,5,2,4] (aleatorio)
+
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+
+unique()
+Descripción: Filtra elementos únicos eliminando duplicados
+Sintaxis: unique(array)
+Ejemplo: unique(["a","b","a","c","b"]) // ["a","b","c"]
+
+function unique(arr) {
+  return [...new Set(arr)];
+}
+
+
+
+
+Resumen
+Veamos el ayudamemoria de métodos para arrays:
+
+Para agregar/remover elementos:
+
+- push(...items) – agrega ítems al final,
+- pop() – extrae un ítem del final,
+- shift() – extrae un ítem del inicio,
+- unshift(...items) – agrega ítems al inicio.
+- splice(pos, deleteCount, ...items) – desde el índice pos borra deleteCount elementos e inserta items.
+- slice(start, end) – crea un nuevo array y copia elementos desde la posición start hasta end (no incluido) en el nuevo array.
+- concat(...items) – devuelve un nuevo array: copia todos los elementos del array actual y le agrega items. Si alguno de los items es un array, se toman sus elementos.
+
+
+Para buscar entre elementos:
+
+* indexOf/lastIndexOf(item, pos) – busca por item comenzando desde la posición pos y devuelve su índice, o -1 si no lo encuentra.
+* includes(value) – devuelve true si el array contiene value, o false en caso contrario.
+* find/filter(func) – filtra elementos a través de ‘func’, devuelve el primero/todos los valores que devolvieron true.
+* findIndex es similar a find, pero devuelve el índice en lugar del valor.
+
+
+Para iterar sobre elementos:
+
+* forEach(func) – llama la func para cada elemento, no devuelve nada.
+
+
+Para transformar el array:
+
+* map(func) – crea un nuevo array a partir de los resultados de llamar a la func para cada elemento.
+* sort(func) – ordena el array y lo devuelve.
+* reverse() – ordena el array de forma inversa y lo devuelve.
+* split/join – convierte una cadena en un array y viceversa.
+* reduce/reduceRight(func, initial) – calcula un solo valor para todo el array, llamando a la func para cada elemento, obteniendo un resultado parcial en cada llamada y pasándolo a la siguiente.
+
+
+Adicional:
+
+Array.isArray(value) comprueba si value es un array.
+Por favor tener en cuenta que sort, reverse y splice modifican el propio array.
+
+Estos métodos son los más utilizados y cubren el 99% de los casos. Pero existen algunos más:
+
+arr.some(fn)/arr.every(fn) comprueba el array.
+
+La función fn es llamada para cada elemento del array de manera similar a map. Si alguno/todos los resultados son true, devuelve true, si no, false.
+
+Estos métodos se comportan con similitud a los operadores || y &&: si fn devuelve un valor verdadero, arr.some() devuelve true y detiene la iteración de inmediato; si fn devuelve un valor falso, arr.every() devuelve false y detiene la iteración también.
+
+
+Podemos usar every para comparar arrays:
+
+function arraysEqual(arr1, arr2) {
+  return arr1.length === arr2.length && arr1.every((value, index) => value === arr2[index]);
+}
+
+alert( arraysEqual([1, 2], [1, 2])); // true
+
+
+
+
+arr.fill(value, start, end) – llena el array repitiendo value desde el índice start hasta end.
+
+arr.copyWithin(target, start, end) – copia sus elementos desde la posición start hasta la posición end en si mismo, a la posición target (reescribe lo existente).
+
+arr.flat(depth)/arr.flatMap(fn) crea un nuevo array plano desde un array multidimensional .
+
+https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array

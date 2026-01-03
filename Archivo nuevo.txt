@@ -1,0 +1,38 @@
+OBJETOS EN JAVASCRIPT - RESUMEN CON EMOJIS 📝
+
+1. Literals and properties (Literales y propiedades) 📦
+Los objetos almacenan colecciones de datos. Se crean con llaves {...}. Propiedad = llave: valor 🔑.
+Ejemplo:
+let user = { name: "John", age: 30 };
+alert(user.name); // Leer 🔍
+user.isAdmin = true; // Agregar 🛡️
+delete user.age; // Eliminar 🗑️
+* Constantes: const user = { name: "John" }; user.name = "Pete"; // Funciona ✅
+
+2. Square brackets (Corchetes) 🔠
+Para nombres con espacios o variables. Usa [].
+user["likes birds"] = true; 🐦
+let key = "name"; user[key] = "John"; 🖇️
+
+3. Computed properties (Propiedades calculadas) 🖥️
+Nombres de propiedad dinámicos usando variables entre corchetes al crear el objeto.
+let bag = { [fruit]: 5 }; 🛍️
+
+4. Property value shorthand (Atajo para valores) 🏃
+Si el nombre de la variable es igual al de la propiedad:
+function makeUser(name, age) { return { name, age }; } ⏩
+
+5. Property names limitations (Limitaciones) 🚫
+Se pueden usar palabras reservadas como nombres de propiedad (for, let, return). 🚦
+
+6. Property existence check (Operador "in") 🔍
+Verifica si una propiedad existe realmente: "key" in object. 🧐
+alert("age" in user); // true ✅
+
+7. The "for..in" loop (El bucle for..in) 🔄
+Recorre todas las llaves del objeto.
+for (let key in user) { alert(key); alert(user[key]); } 🔁
+
+8. Ordered like objects (Ordenamiento) 🔢
+- Enteros: Ordenados de forma ascendente (1, 2, 3...). 📶
+- Strings: Ordenados según el momento en que se crearon. ⏳

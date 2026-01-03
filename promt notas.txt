@@ -1,0 +1,21 @@
+> 📝 **Prompt para crear notas de programación (prácticas, sin repeticiones, bien organizadas)**  
+>   
+> *"Voy a compartir contigo información técnica (artículos, ejercicios, videos, apuntes, etc.) sobre [tema específico, ej: 'closures', 'fetch API', 'localStorage'].  
+>   
+> Ayúdame a crear una **nota de referencia rápida**, en formato `.md`, con las siguientes características:  
+> - Solo incluye lo esencial, sin relleno.  
+> - No repitas información ya cubierta en mis notas anteriores (si menciono cuáles son, exclúyelas).  
+> - Organiza por secciones lógicas (qué es, cómo funciona, sintaxis, ejemplos, trampas comunes, resumen).  
+> - Usa lenguaje claro, directo y práctico — como si fuera un recordatorio que consultaré mientras programo.  
+> - Incluye bloques de código útiles, tablas comparativas y emojis para facilitar la lectura rápida.  
+> - Omite historias, introducciones largas o teoría innecesaria.  
+> - Sé breve, pero completo."*
+
+
+policia del futuro
+escape al futuro
+viajeros en el tiempo
+un viaje en el tiempo
+pide al tiempo que vuelva
+loco viaje al pasado
+la magnifica aventura de bili y ted

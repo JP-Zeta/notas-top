@@ -1,0 +1,779 @@
+
+42256970+JP-Zeta@users.noreply.github.com
+
+cd
+cd ..
+ls option /(arguments)-->sintaxis
+ls -F /
+ls -l
+mkdir name -->crear carpeta
+
+touch namefile -->crear archivo
+
+rm namefile -->borrar archivo
+rm -r -->borra directorio y todo el contenido
+rm -i -->pide confirmar para borrar
+
+mv oldnamefile newnameflie -->renombrar o mueve archivo
+mv namefile nombrecarpeta/
+
+cp -->copia archivo
+
+
+https://swcarpentry.github.io/shell-novice/03-create.html
+
+cp [old] [new]copia un archivo.
+
+mkdir [path]crea un nuevo directorio.
+
+mv [old] [new]mueve (renombra) un archivo o directorio.
+
+rm [path]elimina (borra) un archivo.
+
+*coincide con cero o más caracteres en un nombre de archivo, por lo que *.txtcoincide con todos los archivos que terminan en .txt.
+
+?coincide con cualquier carácter individual en un nombre de archivo, por lo que ?.txtcoincide a.txtpero no any.txt.
+
+El uso de la tecla Control se puede describir de muchas maneras, incluidas Ctrl-X, Control-X, y ^X.
+
+El shell no tiene papelera: una vez que se elimina algo, realmente desaparece.
+
+La mayoría de los nombres de los archivos son something.extension. La extensión no es obligatoria y no garantiza nada, pero normalmente se utiliza para indicar el tipo de datos del archivo.
+
+Dependiendo del tipo de trabajo que realices, es posible que necesites un editor de texto más potente que Nano.
+---------------------------------------------------------------------------------
+GIT - Repositorio
+
+1. Crear un repositorio public/private en GitHub.
+2. Usar git clone con SSH en una capeta local.
+//git clone git@github.com:JP-Zeta/project-rockPaperOrScissors.git
+3. Empezar a trabajar...
+
+---------------------------------------------------------------------------------
+GIT configuration SSH (Secure Shell)
+
+//Verificar si tiene ssh por terminal
+ls ~/.ssh/id_ed25519.pub
+
+//Para crear una clave SSH, e ingresar una contraseña o no
+ssh-keygen -t ed25519
+
+//Vincular SSH a GitHub
+https://github.com/settings/keys
+New SSH Key > title "Linux-lubuntu", key "SSH publica"
+
+//Obteniendo SSH publica
+cat ~/.ssh/id_ed25519.pub
+>> ssh-ed25519 ... johann@johann-virtualbox
+
+//Despues de ubicar la SSH en local llevarlo a GitHub
+Add SSH key
+
+//Probar conexion SSH
+https://docs.github.com/en/authentication/connecting-to-github-with-ssh/testing-your-ssh-connection?platform=linux
+------------------------------------------------------------------------------------
+
+
+GIT
+Secciones del proyecto
+1. directorio de trabajo (M)
+2. area de preparation (git add)
+3. directorio git (git commit)
+
+Estados del archivo
+1. modificado (M)
+2. preparado (commit)
+3. confirmado (add)
+
+// Usar despues de crear el repositorio remoto en GitHub
+git clone git@github.com:JP-Zeta/git_test.git
+git remote -v //muestra el url creado en github
+git status
+git add namefile //agrega al area de preparation
+git commit -m "mensaje"
+git log
+
+La sintaxis básica de Git es program | action | destination.
+
+Si falta -m en commit no entrara en Vim.
+git config --global core.editor "code --wait"
+
+
+https://www.conventionalcommits.org/en/v1.0.0/
+En esencia, un commit eficiente debe responder a estas tres preguntas:
+
+1.¿Qué se hizo? (tipo de cambio: feat, fix, refactor, etc.)
+2.Dónde se hizo? (ámbito: api, frontend, database, etc.)
+3.Por qué se hizo? (descripción concisa del cambio)
+
+git add . + git commit -m "" // ciclo
+git push origin main // listo subir
+
+Resumen 7 comandos para usar despues de crear el repositorio remoto.
+1. git clone git@github.com:username/odin-recipes.git
+2. git remote -v //remote:lugar remoto -v:los detalles. Donde se guarda el proyecto.
+3. git status
+4. git add namefile //agrega al area de preparation
+5. git commit -m "mensaje"
+6. git log // git log --oneline --graph --all // Aqui vez el historial completo de commit despues de hacer merge.
+7. git push origin main
+
+git commit --amend -m "Nuevo mensaje correcto" //Corrige el commit hecho recientemente.
+
+https://github.com/JP-Zeta/odin-recipes/settings/pages
+https://jp-zeta.github.io/odin-recipes/
+https://www.theodinproject.com/lessons/foundations-recipes
+
+----------------------------------------------------------------------------
+COMMIT
+Un mensaje de confirmación describe QUÉ problema resuelven sus cambios y CÓMO los resuelve.
+-GitHub tiene un límite de 72 caracteres.
+
+//Configuration en caso de olvidar ingresar un mensaje en commit.
+git config --global core.editor "code --wait"
+//Se podra escribir el mensaje depues de "git commit" enter.
+
+
+Los commits efectivos constan de dos partes separadas: un sujeto y un cuerpo.
+
+• Sujeto: Un resumen breve del cambio que hiciste. GitHub tiene un límite de 72 caracteres, por lo que se recomienda mantener los sujetos dentro de este límite.
+
+• Cuerpo: Una descripción concisa pero clara de lo que hiciste. Describe el problema que tu commit resuelve y cómo.
+
+--------------------------------
+Ejemplo de commit:
+Sujeto: Agregue el enlace faltante y el texto alternativo al logotipo de la compañía Cuerpo: Los lectores de pantalla no leerán las imágenes a usuarios con discapacidades sin esta información.
+--------------------------------
+
+NOTA:
+Para hacer un commit con sujeto y cuerpo (mensaje multilínea), la forma más sencilla es escribir git commit sin el flag -m y el argumento del mensaje. Esto abrirá un editor, como Visual Studio Code si lo tienes configurado como editor de Git, donde puedes escribir tu mensaje.
+
+Se considera una buena práctica hacer commit cada vez que tengas un cambio significativo en el código.
+
+Haz un commit si logras que una parte del código funcione como quieres, si corriges un error de escritura (typo), o si corriges un error (bug). 
+
+Un consejo es "Commit early and often!" (haz commit pronto y a menudo).
+----------------------------------------------------------------------------
+	Bifurcacion sincronizada con el repositorio ascendente
+  GUÍA DEFINITIVA: FORK y SINCRONIZACIÓN
+
+FASE 1: CREAR FORK (Solo una vez)
+1. En GitHub: Ve al repositorio original
+2. Click en "Fork" (esquina superior derecha)
+3. Selecciona tu cuenta - Se crea: github.com/TU-USUARIO/repo
+
+
+FASE 2: CLONAR (Solo una vez)
+# En tu terminal:
+git clone https://github.com/TU-USUARIO/repo.git
+cd repo  # ← ¡IMPORTANTE! Entrar a la carpeta
+
+
+FASE 3: CONFIGURAR UPSTREAM (Solo una vez)
+# Dentro de la carpeta del repo:
+git remote add upstream https://github.com/USUARIO-ORIGINAL/repo.git
+
+# Verificar:
+git remote -v
+
+terminal...
+> origin  https://github.com/YOUR-USERNAME/YOUR-FORK.git (fetch)
+> origin  https://github.com/YOUR-USERNAME/YOUR-FORK.git (push)
+
+
+FASE 4: SINCRONIZAR (Cada vez que quieras actualizar)
+# Traer cambios del original:
+git fetch upstream
+
+# Fusionar con tu código:
+git merge upstream/main
+
+# Subir a TU fork:
+git push origin main
+
+
+https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo
+
+VERIFICACIONES:
+# ¿Estoy en la carpeta correcta?
+pwd  # Debe terminar en /repo
+
+# ¿Es un repositorio git?
+ls -la  # Debe haber carpeta .git/
+
+# ¿Remotos configurados?
+git remote -v
+# Debe mostrar origin (tu fork) y upstream (original)
+
+----------------------------------------------------------------------------
+
+Convention de Git // https://www.conventionalcommits.org/en/v1.0.0/
+<tipo>(<scope>): <short, imperative tense description of the change>
+<BLANK LINE>
+<body>
+<BLANK LINE>
+<footer>
+-----------------------------------------------------------------------------
+Comando Git
+
+git branch <branch-name>	
+Crea una nueva rama con el nombre especificado.
+
+git checkout <branch-name>	
+Cambia a la rama especificada.
+
+git checkout -b <branch-name>	
+Crea y cambia a una nueva rama en un solo paso (el método más común).
+
+git branch	
+Muestra una lista de todas las ramas locales (la rama actual se marca con un asterisco).
+
+git push origin <branch-name>
+Envía la rama creada al repositorio.
+
+git branch -d <branch-name>
+Elimina la rama de manera local
+
+git push origin --delete <branch-name>
+Elimina la rama en el repositorio remoto de GitHub
+
+-----------------------------------------------------------------------------
+
+Documentation
+https://devdocs.io/
+
+
+HTML
+
+Elements and tags ... <p>some text content</p> // <p>
+Void Elements ... <br>, <img>
+The DOCTYPE ... <!DOCTYPE html> // <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+HTML element ... <html lang="en"> ... </html>
+Head element ... <head> ... </head>
+Meta element ... <meta charset="UTF-8">
+Title element ... <title>My First Webpage</title>
+Body element ... <body> ... </body>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>My First Webpage</title>
+  </head>
+
+  <body>
+    <h1>Hello World!</h1>
+  </body>
+</html>
+
+Paragraphs ... <p></p>
+Headings ... <h1></h1>
+Strong element ... <strong></strong>
+Em element ... <em></em>
+Nesting and indentation ... Anidamiento y sangría
+HTML comments ... <!-- and -->
+Unordered lists ... <ul> <li> item </li> </ul>
+Ordered lists ... <ol> <li> item </li> </ol>
+Anchor elements ... <a href="https://www.theodinproject.com/about" target="_blank" rel="noopener noreferrer">About The Odin Project</a>
+Absolute and relative links ... scheme://domain/path , ./ , ../
+Images ... <img src="../images/dog.jpg">
+Alt attribute ... <img src="https://www.theodinproject.com/mstile-310x310.png" alt="The Odin Project Logo">
+Image size attributes ... <img src="https://www.theodinproject.com/mstile-310x310.png" alt="The Odin Project Logo" height="310" width="310">
+
+Project: Recipes
+
+
+CSS
+
+	-Rule
+selector {
+   property: value; //Declaration
+}
+div.bold-text {
+   font-weight: 700;
+}
+
+	-Selector universal
+* {
+  color: purple;
+}
+
+	-Selector de tipo 
+/* styles.css */
+
+div {
+  color: white;
+}
+
+	-Selectores de clase
+/* styles.css */
+
+.alert-text {
+  color: red;
+}
+
+	-Selectores ID
+/* styles.css */
+
+#title {
+  background-color: red;
+}
+
+	-Selectores de agrupacion
+.read,
+.unread {
+  color: white;
+  background-color: black;
+}
+
+.read {
+  /* several unique declarations */
+}
+
+.unread {
+  /* several unique declarations */
+}
+
+	-Selectores de encadenamiento
+.subsection.header {
+  color: red;
+}
+
+NOTA: Los encadenamientos no aplican para selectores de tipo.
+
+	Encadenamiento con clases e ID.
+.subsection.header {
+  color: red;
+}
+
+.subsection#preview {
+  color: blue;
+}
+
+NOTA: Recordar combinador descendiente (abuelo, hijo y nieto).
+
+<!-- index.html -->
+
+<div class="ancestor">
+  <!-- A -->
+  <div class="contents">
+    <!-- B -->
+    <div class="contents"><!-- C --></div>
+  </div>
+</div>
+
+<div class="contents"><!-- D --></div>
+
+NOTA: Para todas las imagenes añadir height y width como valores en <img> en HTML y luego como propiedades en CSS.
+
+agrupacion de selectores
+.clase1, .clase2
+
+encademaniento
+.clase1.clase2
+
+jeraquia de descendencia (combinador descendente)
+.clase1 .clase2
+-----------------------------------------------------------------
+Mnemotecnia I.C.E (ID → Clase → Elemento)
+Orden de especificidad (de mayor a menor):
+
+I → ID (#mi-id).
+
+C → Clase (.clase, [atributo], :pseudo-clase).
+
+E → Elemento (div, p, ::pseudo-elemento).
+-----------------------------------------------------------------
+
+modelo de caja = padding, border y margin.
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+-----------------------------------------------------------------------
+Divs and Spans
+ cajas genéricas que pueden contener cualquier cosa.
+-----------------------------------------------------------------------
+Casos de uso con flex.
+
+Usa flex: 1 1 0 cuando quieras:
+
+Una distribución 100% equitativa (ej: columnas en una tabla).
+
+Evitar que el contenido desequilibre los tamaños.
+
+Usa flex: 1 1 auto cuando quieras:
+
+Que algunos elementos mantengan un tamaño mínimo (ej: un sidebar que no debe colapsar).
+
+Respetar el aspecto natural del contenido (imágenes, textos).
+
+
+Regla mnemotécnica
+0 = "Cero preferencias": Todos parten de cero y comparten por igual.
+
+auto = "Auténtico tamaño": Respeta lo que cada uno lleva dentro.
+- - - - - - - - - - - - - - 
+.globo {
+  flex: 1 0 100px; /* grow | shrink | basis */
+}
+
+Significa:
+
+1. Quiero estirarme (grow: 1).
+
+2. No me encojas (shrink: 0).
+
+3. Empiezo con 100px (basis: 100px).
+
+-------------------------------------------------------------------------
+
+token de 30 dias. Inicia 23 de mayo 2025
+"token Borrado Apeticion De Git Para Poder Hacer Git Push Origin Main"
+
+
+configurar git para no estar escribiendo token en cada git push... buscar en TOP el tutorial
+
+---------------------------------------------------------------------------
+ESTRUCTURA HTML
+
+
+<!DOCTYPE html>: Le dice al navegador que es un documento HTML5.
+
+<html lang="es">: Define el idioma de la página (español en este caso).
+
+<head>: Contiene metadatos (información que no se ve, pero es importante).
+
+	<meta charset="UTF-8">: Permite usar caracteres especiales (ñ, á, é, etc.).
+
+	<meta name="viewport">: Hace que la página sea responsive.
+
+	<title>: Título que aparece en la pestaña del navegador.
+
+<body>: Todo el contenido visible de la página.
+
+	<header>: Cabecera (logo, menú de navegación).
+
+		<nav>: Menú de navegación (usualmente con listas <ul> y <li>).
+
+	<main>: Contenido principal (único por página).
+
+		<section>: Agrupa contenido temático.
+
+			<article>: Contenido independiente (ej: noticias, posts).
+
+		<aside>: Contenido secundario (ej: publicidad, enlaces relacionados).
+
+	<footer>: Pie de página (copyright, contacto).
+----------------------------------------------------------------------------
+Consejo clave
+Las etiquetas semánticas (<header>, <article>, etc.) ayudan al SEO y a la accesibilidad. Los <div> son para estilos o agrupaciones sin significado.
+----------------------------------------------------------------------------
+	
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Título de la Página</title>
+</head>
+<body>
+    <!-- Contenido visible de la página -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h1>Sección Principal</h1>
+            <article>
+                <h2>Artículo 1</h2>
+                <p>Contenido del artículo...</p>
+            </article>
+            <article>
+                <h2>Artículo 2</h2>
+                <p>Contenido del artículo...</p>
+            </article>
+        </section>
+
+        <aside>
+            <div>Contenido secundario (ej: barra lateral).</div>
+        </aside>
+    </main>
+
+    <footer>
+        <div>© 2024 Mi Página. Todos los derechos reservados.</div>
+    </footer>
+</body>
+</html>
+
+---------------------------------------------------------------------------
+JS
+8 tipos de datos, 7 primitivos(p) y uno no primitivo(np)
+1. number
+2. bigint para números enteros de longitud arbitraria.
+3. string
+4. boolean
+5. null: para valores desconocidos – un tipo independiente que tiene un solo valor null
+6. undefined: para valores no asignados – un tipo independiente que tiene un solo valor undefined.
+7. symbol: para identificadores únicos.
+8. (np)object
+
+
+*Basic String Methods
+String length
+String charAt()
+String charCodeAt()
+String at()
+String [ ]
+String slice()
+String substring()
+String substr()
+String toUpperCase()
+String toLowerCase()
+String concat()
+String trim()
+String trimStart()
+String trimEnd()
+String padStart()
+String padEnd()
+String repeat()
+String replace()
+String replaceAll()
+String split()
+	See Also:
+*String Search Methods
+*String Templates
+
+https://www.w3schools.com/js/js_string_methods.asp
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
+
+
+// Basic String Methods - Ejemplos prácticos
+const str = "Hello World";
+
+// Propiedades y acceso
+console.log(str.length); // 11
+console.log(str.charAt(1)); // "e"
+console.log(str.charCodeAt(0)); // 72 (Unicode de 'H')
+console.log(str.at(-1)); // "d" (último carácter)
+console.log(str[6]); // "W"
+
+// Extracción
+console.log(str.slice(0, 5)); // "Hello"
+console.log(str.substring(6)); // "World"
+console.log(str.substr(6, 3)); // "Wor" (obsoleto)
+
+// Transformación
+console.log(str.toUpperCase()); // "HELLO WORLD"
+console.log(str.toLowerCase()); // "hello world"
+console.log(str.concat("!")); // "Hello World!"
+
+// Limpieza
+console.log("  hi  ".trim()); // "hi"
+console.log("  hi  ".trimStart()); // "hi  "
+console.log("  hi  ".trimEnd()); // "  hi"
+
+// Relleno
+console.log("5".padStart(3, "0")); // "005"
+console.log("Hi".padEnd(5, "!")); // "Hi!!!"
+
+// Repetición y reemplazo
+console.log("Ha".repeat(3)); // "HaHaHa"
+console.log(str.replace("World", "JS")); // "Hello JS"
+console.log("lol".replaceAll("l", "w")); // "wow"
+
+// División
+console.log(str.split(" ")); // ["Hello", "World"]
+
+
+
+// String Search Methods - Ejemplos prácticos
+const text = "Hello World, welcome to JavaScript!";
+
+// Búsqueda básica
+console.log(text.indexOf("World")); // 6 (posición)
+console.log(text.lastIndexOf("o")); // 17 (última aparición)
+
+// Búsqueda con regex
+console.log(text.search(/[A-Z]/)); // 0 (primer mayúscula)
+console.log(text.match(/l/g)); // ["l", "l", "l"] (todas las 'l')
+console.log([...text.matchAll(/l/g)]); // Array de coincidencias
+
+// Búsqueda booleana
+console.log(text.includes("JS")); // false
+console.log(text.startsWith("Hello")); // true
+console.log(text.endsWith("!")); // true
+
+// Ejemplo integrado
+if (text.includes("JavaScript") && text.endsWith("!")) {
+  console.log("¡Encontrado!"); // Se ejecuta
+}
+
+
+Operadores Logicos
+
+1. Operador && (AND)
+Regla:
+
+Evalúa los valores de izquierda a derecha.
+Retorna el primer valor falso que encuentre.
+Si todos son verdaderos, retorna el último valor.
+
+Ejemplos:
+javascript
+console.log(0 && "hola");      // 0 (primer valor falso)
+console.log(null && true);     // null (primer valor falso)
+console.log(10 && "JS");       // "JS" (ambos son truthy, retorna el último)
+
+
+2. Operador || (OR)
+Regla:
+
+Evalúa los valores de izquierda a derecha.
+Retorna el primer valor verdadero que encuentre.
+Si todos son falsos, retorna el último valor.
+
+Ejemplos:
+javascript
+console.log(0 || "hola");      // "hola" (primer valor truthy)
+console.log(null || false);    // false (todos falsos, retorna el último)
+console.log(10 || "JS");       // 10 (primer valor truthy)
+
+
+Truco mnemotécnico
+&&: Se queda con el primer "NO" (valor falso) que encuentre.
+||: Se queda con el primer "SÍ" (valor verdadero) que encuentre.
+
+
+
+Orden de precedencia:
+! (NOT) → Mayor prioridad
+
+&& (AND) → Prioridad media
+
+|| (OR) → Menor prioridad
+
+
+
+Expresiones Regulares
+
+Las expresiones regulares son patrones que se utilizan para hacer coincidir combinaciones de caracteres en cadenas. En JavaScript, las expresiones regulares también son objetos. Estos patrones se utilizan con los métodos exec() y test() de RegExp, y con match(), matchAll(), replace(), replaceAll(), search() y split() métodos de String. Este capítulo describe las expresiones regulares de JavaScript.
+https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Regular_expressions
+
+----------------------------------------------------------------------------------
+Valores return
+¿Cuándo usar cada una?
+Sin return								Con return
+Mostrar alertas/console.log				Cálculos matemáticos
+Modificar variables externas			Validaciones (true/false)
+Manipular el DOM						Obtener datos procesados
+
+Conclusión: Usa return solo cuando necesites que la función devuelva un valor. Si la función es una "acción", no es obligatorio. 
+
+Diferencias Clave
+Característica		Funciones					Procedimientos
+Retorno				return valor				Sin return (o return;)
+Resultado			Útil para cálculos			Efectos secundarios (acciones)
+Uso típico			Transformar datos			Mostrar alertas, modificar HTML
+
+----------------------------------------------------------------------------------
+
+ Comparativa de Funciones en JavaScript
+Tipo					Sintaxis									Hoisting	Nombre								Scope de this		¿Auto-ejecutable?	Uso Típico
+Declaración				function suma(a, b) { ... }					✅ Sí		Obligatorio							Dinámico			❌ No				Funciones generales/reutilizables.
+Expresada Nombrada		const resta = function restar(a, b) { ... }	❌ No		Opcional (útil en stack traces)		Dinámico			❌ No				Depuración o recursión interna.
+Expresada Anónima		const multiplicar = function(a, b) { ... }	❌ No		❌ Anónima							Dinámico			❌ No				Callbacks, módulos.
+Arrow Function			const dividir = (a, b) => a / b;			❌ No		❌ Anónima							Léxico (heredado)	❌ No				Callbacks, funciones cortas, manejo de this.
+IIFE (Auto-ejecutable)	(function() { console.log('Hola'); })();	❌ No		Opcional							Dinámico			✅ Sí				Encapsular scope, evitar contaminación global.
+----------------------------------------------------------------------------------
+
+Resolución de problemas
+Curso Fundamentos
+
++Enfoque Estructurado para Resolver Problemas
+
+-Divide el problema en partes más pequeñas y manejables.
+
+-Sigue un proceso lógico: entender el problema → planificar → implementar → evaluar.
+
+Enfoque Clave
+El artículo enfatiza:
+
+1.Planificar antes de codificar.
+2.Dividir problemas complejos en subproblemas simples.
+3.Practicar sistemáticamente para mejorar la lógica algorítmica.
+
+1.entender el problema
+2.ṕĺanificar
+3.escribir pseudocodigo
+
+----------------------------------------------------------------------------------
+Para condiciones Conclusión clave:
+El orden importa porque JavaScript evalúa condiciones de arriba a abajo.
+
+Siempre coloca primero la condición más específica para evitar que casos especiales sean capturados por reglas generales.
+----------------------------------------------------------------------------------
+Resumen breve del artículo:
+"How to Think Like a Programmer – Lessons in Problem Solving" de FreeCodeCamp (por Ryan Holiday) destaca que la programación es más sobre resolver problemas que escribir código. Los puntos clave son:
+
+1.Descomponer problemas: Dividir problemas complejos en partes más pequeñas y manejables.
+
+2.Pseudocódigo y planificación: Escribir pasos lógicos antes de codificar.
+
+3.Mentalidad de depuración: Aprender de los errores y abordarlos sistemáticamente.
+
+4.Práctica deliberada: Usar recursos como Project Euler o LeetCode para mejorar.
+
+5.Paciencia y persistencia: La frustración es parte del proceso de aprendizaje.
+
+
+Frase final del autor (Ryan Holiday):
+"The obstacle is the way. The problem is the solution."
+
+("El obstáculo es el camino. El problema es la solución.")
+https://www.freecodecamp.org/news/how-to-think-like-a-programmer-lessons-in-problem-solving-d1d8bf1de7d2/
+
+Conclusión del artículo:
+Pensar como programador significa enfocarse en el proceso de solución, no solo en el resultado. La habilidad clave es aprender a aprender.
+----------------------------------------------------------------------------------
+"Understanding Errors"
+
+Puntos clave:
+
+1. Tipos comunes de errores:
+Syntax Errors: Errores de escritura (ej: faltan } o ;).
+ReferenceError: Variables/funciones no definidas.
+TypeError: Operaciones inválidas (ej: null.length).
+Logic Errors: Código funciona pero da resultados incorrectos.
+
+2. Cómo leer mensajes de error:
+Identificar tipo de error (ej: SyntaxError).
+Revisar línea y archivo mencionados.
+Analizar el mensaje descriptivo (ej: undefined is not a function).
+
+3. Herramientas útiles:
+Console.log(): Para rastrear valores.
+Depurador (debugger): Ejecución paso a paso.
+Stack traces: Seguir el flujo de ejecución.
+
+4. Mentalidad proactiva:
+Los errores son oportunidades de aprendizaje.
+Leer el código en voz alta o explicarlo a otro ayuda a detectar fallos.
+
+
+Errores comunes en JS lista
+https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Errors
