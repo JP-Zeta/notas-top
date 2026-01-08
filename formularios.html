@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Guía de Formularios 🚀</title>
+</head>
+<body>
+
+    <h1>📩 Capturando datos del usuario</h1>
+
+    <form action="/procesar-datos" method="post">
+        
+        <div>
+            <label for="id_nombre">Nombre completo 📇:</label>
+            <input type="text" id="id_nombre" name="user_name" placeholder="Ej: Tony Stark" required>
+        </div>
+
+        <div>
+            <label for="id_email">Correo Electrónico 📧:</label>
+            <input type="email" id="id_email" name="user_email" required>
+        </div>
+
+        <div>
+            <label for="id_pass">Contraseña 🔑:</label>
+            <input type="password" id="id_pass" name="user_password">
+        </div>
+
+        <div>
+            <label for="id_pais">País 🌎:</label>
+            <select id="id_pais" name="user_country">
+                <option value="ven">Venezuela 🇻🇪</option>
+                <option value="mex">México 🇲🇽</option>
+                <option value="esp">España 🇪🇸</option>
+                <option value="arg">Argentina 🇦🇷</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="id_mensaje">Biografía o Comentarios ✍️:</label>
+            <textarea id="id_mensaje" name="user_bio" rows="4" cols="30"></textarea>
+        </div>
+
+        <button type="submit">Enviar Información ✉️</button>
+
+    </form>
+
+    <hr>
+
+📜 Leyenda de Poder (Formularios Avanzados) 📜
+🏗️ Estructura y Envío
+<form> 📦: Es la "caja de correos". Todo lo que esté fuera de aquí no se enviará al servidor.
+
+action 🚩: Imagínalo como la dirección en el sobre. Dice a qué archivo o URL deben llegar los datos.
+
+method 🛣️:
+
+GET: Los datos viajan "pegados" a la URL. Útil para búsquedas.
+
+POST: Los datos viajan "dentro" del paquete de forma privada. Útil para contraseñas.
+
+⌨️ Entradas y Selección
+<input type="text"> ✍️: Para nombres o datos cortos de una sola línea.
+
+<input type="email"> 📧: Igual al de texto, pero el navegador regaña al usuario si olvida poner el @ o el .com.
+
+<input type="password"> 🔒: El "campo ninja". Sustituye lo que escribes por puntos o asteriscos.
+
+<textarea> 📝: A diferencia del input, este se puede agrandar y es para párrafos o mensajes largos.
+
+<select> & <option> 🔽: Crea un menú desplegable. El select es el menú y cada option es un plato diferente.
+
+🔗 Atributos de Conexión
+id 🆔: Es el nombre único para el navegador y el CSS. Sirve para que el label sepa a quién pertenece.
+
+name 📛: Es el nombre para el servidor. Si en el name pones "apodo", el servidor recibirá: apodo = "Lo que escribió el usuario".
+
+for (en label) 🧲: Es el imán que conecta el texto con el cuadro. Si haces clic en el texto, el cuadro se activa.
+
+value 💎:
+
+En un input, es lo que está escrito por defecto.
+
+En un option, es el código secreto que recibe el servidor (Ej: El usuario ve "México 🇲🇽" pero el servidor recibe "mex").
+
+🛠️ Atributos de Control
+placeholder 💡: El texto "fantasma" que ayuda al usuario a saber qué escribir.
+
+required ⚠️: Convierte el campo en obligatorio. Si no se llena, el formulario se bloquea.
+
+type="submit" 🚀: Transforma un simple botón en el "botón de despegue" que envía todo.
+
+
+
+    </body>
+</html>
