@@ -1,0 +1,145 @@
+============================================================
+GUÍA DE HERRAMIENTAS PARA DISEÑO RESPONSIVO (SIN MEDIA QUERIES)
+============================================================
+
+En el frontend moderno, el "Diseño Intrínseco" permite que los 
+elementos se adapten solos al espacio disponible. 
+
+Estas son las herramientas fundamentales:
+
+1. FUNCIONES MATEMÁTICAS UNIVERSALES
+------------------------------------
+Se pueden usar en anchos, márgenes, rellenos y fuentes:
+
+* calc(): Realiza operaciones aritméticas (+, -, *, /).
+  Ejemplo: width: calc(100% - 20px);
+
+* min(): Elige el valor más pequeño de una lista.
+  Ejemplo: width: min(50%, 400px);
+
+* max(): Elige el valor más grande.
+  Ejemplo: width: max(20%, 200px);
+
+* clamp(mínimo, ideal, máximo): Fija un valor ideal elástico
+  con un límite superior e inferior.
+  Ejemplo: font-size: clamp(1rem, 5vw, 2.5rem);
+
+2. HERRAMIENTAS ESPECÍFICAS DE CSS GRID
+---------------------------------------
+Funcionan dentro de grid-template-columns o grid-template-rows
+(grid-auto-columns o grid-auto-rows):
+
+* minmax(mín, máx): Define un rango de tamaño para una pista.
+
+* auto-fit: Ajusta las columnas expandiéndolas para que 
+  ocupen todo el espacio sobrante.
+
+* auto-fill: Crea tantas columnas como quepan, aunque 
+  estén vacías.
+
+* repeat(): Función para evitar repetir valores. Esencial con 
+  auto-fit/auto-fill.
+
+* min-content: Ajusta el tamaño al elemento más pequeño 
+  posible sin desbordar (ej. la palabra más larga de un texto).
+
+* max-content: Ajusta el tamaño para que todo el contenido 
+  quepa en una sola línea.
+
+* fit-content(): Mezcla de ambos; crece con el contenido pero 
+  pone un límite máximo.
+
+3. UNIDADES Y VALORES ELÁSTICOS
+-------------------------------
+* fr (Fraction unit): Fracción del espacio libre disponible.
+* % (Porcentaje): Relativo al tamaño del contenedor padre.
+* vw / vh: Relativo al tamaño de la ventana del navegador.
+* em / rem: Relativo al tamaño de la fuente.
+* auto: Deja que el contenido o el navegador decidan el tamaño.
+
+ESTRATEGIA PROFESIONAL RECOMENDADA:
+-----------------------------------
+Usa "repeat(auto-fit, minmax(250px, 1fr))" en container para crear 
+rejillas que se acomodan solas sin necesidad de Media Queries.
+============================================================
+
+GRID - RESPONSIVA
+
+// Padre
+.gallery {
+  display: grid;
+  gap: 1rem;
+  grid-auto-flow: dense;
+  grid-auto-rows: 22rem;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+}
+
+// Hijo
+.featured {
+  grid-column: span 2;
+}
+
+
+
+============================================================
+RESUMEN: CSS CONTAINER QUERIES
+============================================================
+
+A diferencia de las Media Queries (que miran el tamaño de la pantalla), 
+las Container Queries permiten que un elemento se adapte según el 
+tamaño de su CONTENEDOR PADRE.
+
+1. CONCEPTOS CLAVE
+------------------
+* Independencia: Los componentes son modulares; se adaptan al 
+  espacio donde se coloquen (sidebar, main, footer).
+* Enfoque: Ideal para sistemas de diseño basados en componentes 
+  (React, Vue, Web Components).
+
+2. PROPIEDAD PRINCIPAL: container-type
+--------------------------------------
+Se aplica al padre para definirlo como el contexto de consulta:
+
+* inline-size: El valor más común. Permite consultar el ancho 
+  del contenedor (ideal para diseño vertical).
+* size: Permite consultar tanto ancho como alto (requiere 
+  dimensiones fijas en el padre).
+
+3. SINTAXIS BÁSICA
+------------------
+Primero defines al padre y luego consultas desde el hijo:
+
+.padre {
+  container-type: inline-size;
+}
+
+@container (min-width: 400px) {
+  .hijo {
+    /* Cambios de diseño cuando el PADRE mide +400px */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+4. VENTAJAS PRINCIPALES
+-----------------------
+* Modularidad: Un componente se autogestiona sin importar en 
+  qué página esté.
+* Menos código: Reduce la necesidad de múltiples Media Queries 
+  globales.
+============================================================
+
+
+
+Los 3 rangos estándar (para empezar)
+Si necesitas una guía para no perderte, la mayoría de los desarrolladores usan estos tres rangos lógicos:
+
+Móvil (< 600px): Una sola columna, menús hamburguesa.
+
+Tablet / Laptop pequeño (600px - 1024px): Introducción de sidebars o rejillas de 2 columnas.
+
+Desktop / Pantallas grandes (> 1024px): Layout completo, uso de grid-template-areas complejo.
+
+
+
+Al aplicar display: contents; en un elemento hijo de flexbox, este evita que sea flexible.
