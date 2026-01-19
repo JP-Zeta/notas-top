@@ -143,3 +143,34 @@ Desktop / Pantallas grandes (> 1024px): Layout completo, uso de grid-template-ar
 
 
 Al aplicar display: contents; en un elemento hijo de flexbox, este evita que sea flexible.
+
+
+
+Imágenes Responsivas (TOP)
+• Regla de Oro: No fijar `width` y `height` a la vez; usar `height: auto`.
+
+• `object-fit: cover`: Llena el contenedor con la `` sin deformarla (la recorta).
+
+• `background-size: cover/contain`: Controla el ajuste de imágenes de fondo.
+
+• `srcset` / `<picture>`: Sirven diferentes archivos según resolución o tamaño (Art Direction).
+
+
+
+- **`object-fit: fill`**: Es el valor por defecto; estira o comprime la imagen para que encaje exactamente en las dimensiones dadas, lo que suele distorsionarla.
+
+
+
+Art Direction y Art Direction
+
+### Guía MDN (Resumen Pro)
+- **Cambio de Resolución (Misma foto):**
+  - `srcset`: Lista de archivos + sus anchos reales (ej: `img-small.jpg 400w`).
+  - `sizes`: Indica al navegador cuánto espacio ocupará la imagen según el viewport.
+- **Dirección de Arte (Diferente foto):**
+  - `<picture>` + `<source media="...">`: Cambia la imagen/recorte según el dispositivo.
+- **DPR:** Usa `1x`, `2x` en `srcset` para pantallas de alta densidad (Retina).
+
+Si solo quieres que el navegador elija el mejor tamaño: Usa srcset + sizes.
+
+Si quieres cambiar la foto (recortarla o cambiar el formato) según el dispositivo: Usa <picture>.
